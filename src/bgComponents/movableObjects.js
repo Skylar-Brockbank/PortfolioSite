@@ -13,6 +13,8 @@ class MobileObject{
   move(coords){
     this.x= (this.x+coords[0])%this.canvas.width
     this.y= (this.y+coords[1])%this.canvas.height
+    if(this.x<0){this.x=this.canvas.width}
+    if(this.y<0){this.x=this.canvas.height}
   }
   update(){
     this.move(this.vector)

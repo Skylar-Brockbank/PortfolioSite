@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import Navigation from './components/navigation.jsx'
-
+import Background from './background.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Background/>
     <Navigation/>
     <App />
   </StrictMode>,

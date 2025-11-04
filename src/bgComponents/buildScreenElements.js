@@ -3,7 +3,10 @@ import ObSet from "./movableObjects"
 
 export default function buildContent(canvas,brush){
     let data = new ObSet(canvas,brush)
-    data.createObjects(100)
+
+    const carea=(canvas.height*canvas.width)/10000
+    const obNum=Math.floor(carea*0.55)
+    data.createObjects(obNum)
     
     
     let rings=[]

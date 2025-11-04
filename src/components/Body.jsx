@@ -2,10 +2,12 @@ function Body(){
 
   const divStyles={
     backgroundColor:"rgba(217, 205, 159, 0.88)",
-    color:"rgba(85, 37, 29, 1)",
+    // color:"rgba(44, 19, 15, 1)",
+    color:"rgba(0, 9, 78, 1)",
     padding:"1em",
     // margin:"1em"
-    marginTop:"1em"
+    marginTop:"1em",
+    borderRadius:"0.5em"
   }
   const layoutBox={
     display:"flex",
@@ -21,8 +23,8 @@ function Body(){
   return(
     <>
       <div style={divStyles}>
-        <h3>Card 1 - The Overview</h3>
-        <p>An Overview of me as a developer, I'm a great developer, the best, perhaps. I make websites and web apps, great web apps, some people make bad web apps, did you know that, many many web apps, not so good, you look in their consoles and it's like whoa, lots of errors. Lots. of. Errors. Not me. My web apps are <strong>clean</strong>. Clean clean apps.</p>
+        <h3>Hi, I'm Skylar</h3>
+        <p>I'm a great developer, the best, perhaps. I make websites and web apps, great web apps, some people make bad web apps, did you know that, many many web apps, not so good, you look in their consoles and it's like whoa, lots of errors. Lots. of. Errors. Not me. My web apps are <strong>clean</strong>. Clean clean apps.</p>
       </div>
       
       <div style={divStyles}>
