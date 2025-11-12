@@ -1,4 +1,4 @@
-function Navigation(){
+function Navigation(props){
 
   const container={
     width:"100vw",
@@ -23,6 +23,18 @@ function Navigation(){
     padding:"1em",
     // paddingRight:"2em"
   }
+  const handleChange=(arg)=>{
+    props.handleSetPage(arg)
+  }
+  const handleHome=()=>{
+    handleChange("home")
+  }
+  const handleGallery=()=>{
+    handleChange("gallery")
+  }
+  const handleTest=()=>{
+    handleChange("detail")
+  }
   return(
     <>
     <div style={container}>
@@ -30,8 +42,10 @@ function Navigation(){
         <p style={left}>This is the navigation bar</p>
       </div>
       <div>
-        <p style={right}>Home Link</p>
+        <p style={right} onClick={handleHome}>Home Link</p>
+        <p style={right} onClick={handleGallery}>Gallery</p>
         <p style={right}>Contact Link</p>
+
       </div>
     </div>
     </>

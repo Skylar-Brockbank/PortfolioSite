@@ -8,7 +8,7 @@ import Background from './background.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Background/>
-    <Navigation/>
+    
     <App />
   </StrictMode>,
 )

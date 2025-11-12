@@ -1,21 +1,15 @@
 
 import getBackgroundGradients from './bgComponents/backgroundGradients.js';
-import buildCanvas from './bgComponents/canvas.js';
-import ObSet from './bgComponents/movableObjects';
-import Ring from './bgComponents/rings';
 import buildContent from './bgComponents/buildScreenElements.js';
 import { getMetalTexture } from './bgComponents/backgroundGradients.js';
-
-// const anchor = document.getElementById("root")
-
-//creates a fullsized canvas, adds it to the anchor element and creates a brush
-// let [canvas,brush] = buildCanvas(anchor)
 
 export default class backgroundBuilder{
   constructor(canvas,brush){
     this.canvas=canvas
     this.brush=brush
   }
+
+  //This was retrofitted into a function that returns the animate function
   buildBackground(){
     let canvas=this.canvas
     let brush=this.brush
@@ -23,21 +17,7 @@ export default class backgroundBuilder{
     let bgg=getBackgroundGradients(canvas,brush)
     let lineMetal=getMetalTexture(canvas,brush)
     let [data,rings,ringLinks] = buildContent(canvas,brush)
-    
-    
-    // window.addEventListener("resize",e=>{
-    //   canvas.height=window.innerHeight
-    //   canvas.width=window.innerWidth
-    //   bgg=getBackgroundGradients(canvas,brush)
-    //   lineMetal=getMetalTexture(canvas,brush)
-    // })
-    
-    
-    
-    
-    
-    
-    
+
     //======FUNCTIONS=========
     
     const drawRingLinks=()=>{
@@ -81,7 +61,9 @@ export default class backgroundBuilder{
       drawRingLinks()
     }
     //========================
-    
+
+
+
     //=========ACTIONS==========
     
     const animate=()=>{
@@ -91,6 +73,4 @@ export default class backgroundBuilder{
     }
     return animate
   }
-  
 }
-//creates the gradient background for the page

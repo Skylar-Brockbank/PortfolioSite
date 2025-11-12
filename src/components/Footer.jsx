@@ -1,3 +1,4 @@
+import ProjectGrid from "./ProjectGrid"
 function Footer(){
 
   const divStyles={
@@ -9,6 +10,7 @@ function Footer(){
       <p>link to github</p>
       <p>link to linkedin</p>
       <p>link to contact page</p>
+      {/* <ProjectGrid /> */}
     </div>
   )
 }
