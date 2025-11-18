@@ -7,8 +7,9 @@ function ProjectGrid(props){
     display:"grid",
     gridTemplateColumns:"repeat(3, 1fr)",
     gridGap:"1em",
-    background:"rgba(217, 205, 159, 0.3)",
-    padding:"1em"
+    background:"rgba(217, 205, 159, 0.2)",
+    padding:"1em",
+    borderRadius:"2em"
   }
   const handleChange=(arg)=>{
     props.handleDetail(arg)

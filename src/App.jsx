@@ -6,46 +6,53 @@ import Hero from './components/hero'
 import Navigation from './components/navigation'
 import ProjectGrid from './components/ProjectGrid'
 import DetailPage from './components/DetailPage'
+import Contact from './components/Contact'
 
 import './App.css'
 
 function App() {
-  const [currentPage,setCurrentPage] = useState({page:"home",id:null});
+  const [currentPage,setCurrentPage] = useState({page:"home",id:null,portal:false,contact:false});
 
   const handleSetPage=(arg)=>{
+    window.scrollTo(0,0)
     setCurrentPage({...currentPage,page:arg})
   }
   const handleDetail=(arg)=>{
-    setCurrentPage({...currentPage,page:"detail",id:arg})
+    setCurrentPage({...currentPage,portal:true,id:arg})
   }
-
-  console.log(currentPage)
-  console.log(galleryData[currentPage.id])
+  const handleContact=()=>{
+    setCurrentPage({...currentPage,contact:true})
+  }
+  const portalOn=()=>{
+    setCurrentPage({...currentPage,portal:true})
+  }
+  const portalOff=()=>{
+    setCurrentPage({...currentPage,portal:false})
+  }
+  const contactOff=()=>{
+    setCurrentPage({...currentPage,contact:false})
+  }
   if(currentPage.page=="home"){
     return (
       <>
-        <Navigation handleSetPage={handleSetPage}/>
-        <Hero/>
-        <Body/>
+        <Navigation contact={handleContact} handleSetPage={handleSetPage}/>
+        <DetailPage func ={portalOff} visible={currentPage.portal} data={galleryData[currentPage.id]}/>
+        <Contact func={contactOff} visible={currentPage.contact}/>
+        <Hero func={handleContact}/>
+        <Body func={handleDetail} change={handleSetPage}/>
         <Footer/>
       </>
     )
   }else if(currentPage.page=="gallery"){
     return (
       <>
-        <Navigation handleSetPage={handleSetPage}/>
+        <Navigation contact={handleContact} handleSetPage={handleSetPage}/>
         <h1>Project Gallery</h1>
+        {<DetailPage func ={portalOff} visible={currentPage.portal} data={galleryData[currentPage.id]}/>}
+        <Contact func={contactOff} visible={currentPage.contact}/>
         <ProjectGrid handleDetail={handleDetail}/>
         <Footer/> 
       </>
-    )
-  }else if(currentPage.page=="detail"){
-    return(
-    <>
-      <Navigation handleSetPage={handleSetPage}/>
-      <DetailPage data={galleryData[currentPage.id]}/>
-      <Footer/>
-    </>
     )
   }
 }

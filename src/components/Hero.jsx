@@ -1,4 +1,4 @@
-function Hero(){
+function Hero(props){
 
   const heroStyles={
     backgroundColor:"rgba(10, 10, 128, 0)",
@@ -11,12 +11,15 @@ function Hero(){
     backgroundColor:"rgb(150, 25, 25)",
     color:"white"
   }
+  const handleClick=()=>{
+    props.func()
+  }
   return(
     <>
     <div style={heroStyles}>
       <h1>Hold on to your butt</h1>
       <p>Things are about to get crayzay</p>
-      <button style={buttonStyles}>Contact Me</button>
+      <button style={buttonStyles} onClick={handleClick}>Contact Me</button>
     </div>
     </>
   )

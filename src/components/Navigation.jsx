@@ -1,3 +1,4 @@
+import personalMark from "../assets/personal-mark.svg"
 function Navigation(props){
 
   const container={
@@ -20,8 +21,7 @@ function Navigation(props){
   const right={
     display:"inline",
     justifySelf:"end",
-    padding:"1em",
-    // paddingRight:"2em"
+    padding:"1em"
   }
   const handleChange=(arg)=>{
     props.handleSetPage(arg)
@@ -32,19 +32,22 @@ function Navigation(props){
   const handleGallery=()=>{
     handleChange("gallery")
   }
-  const handleTest=()=>{
-    handleChange("detail")
+  const iconStyles={
+    height:"2em"
+  }
+  const divStyles={
+    alignContent:"center"
   }
   return(
     <>
     <div style={container}>
-      <div>
-        <p style={left}>This is the navigation bar</p>
+      <div style={divStyles}>
+        <img src={personalMark} style={iconStyles} onClick={handleHome}></img>
       </div>
-      <div>
-        <p style={right} onClick={handleHome}>Home Link</p>
+      <div style={divStyles}>
+        <p style={right} onClick={handleHome}>Home</p>
         <p style={right} onClick={handleGallery}>Gallery</p>
-        <p style={right}>Contact Link</p>
+        <p style={right} onClick={props.contact}>Contact Me</p>
 
       </div>
     </div>
