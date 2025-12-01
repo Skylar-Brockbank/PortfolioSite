@@ -1,6 +1,7 @@
 
 import ReactDom from 'react-dom';
 import { useState } from 'react';
+import './modal.css'
 
 export default function Contact(props){
   const [submitted,setSubmitted]=useState(false)
@@ -46,10 +47,20 @@ export default function Contact(props){
     width:"100%",
     alignContent:"center"
   }
+  const contentStyles={
+    width:"70%",
+    height:"100%",
+    margin:"auto",
+    backgroundColor:"rgba(34, 28, 0, 0.18)",
+    borderRadius:"1em",
+    alignContent:"center"
+  }
  
   const handleClose=()=>{
+    let target = document.getElementById("modalShell")
+    target.classList.add("closing")
     setTimeout(setSubmitted(false),100)
-    props.func()
+    setTimeout(()=>{props.func()},500)
   }
   const handleForm=async()=>{
     setTimeout(()=>{
@@ -61,28 +72,33 @@ export default function Contact(props){
         <div style={containerStyles}>
         <div style={overlayStyles} onClick={handleClose}></div>
           <div style={divStyles}>
-            <h2>Your Message Has been sent</h2>
-            <button onClick={handleClose}>Close</button>
+            <div style={contentStyles}>
+              <h2>Your Message Has been sent</h2>
+              <button onClick={handleClose}>Close</button>
+            </div>
           </div>
         </div>,
         document.getElementById("portal")
       )
     }else{
       return ReactDom.createPortal(
-        <div style={containerStyles}>
+        <div id="modalShell" className="modal" style={containerStyles}>
         <div style={overlayStyles} onClick={handleClose}></div>
           <div style={divStyles}>
             <iframe name='dummy' id='dummy' style={{display:'none'}}></iframe>
             {/* <form action={prefix} method='POST' onSubmit={handleForm}> */}
-            <form action={prefix} method='POST' target="dummy" onSubmit={handleForm}>
-              <label>Your prefered Name: <input name='entry.780464875' id="name" type='text' required></input></label>
-              <br></br>
-              <label>Your Email: <input name='entry.1198297426' id="email" type='email' required></input></label>
-              <br></br>
-              <label>How Can I Help? <input name='entry.1898480093' id="message" type='text' required></input></label>
-              <br></br>
-              <button type='submit'>send</button>
-            </form>
+            <div style={contentStyles}>
+              <h2 style={{textDecoration:"none",fontSize:"2.5em"}}>Let's get in Contact!</h2>
+              <form action={prefix} method='POST' target="dummy" onSubmit={handleForm}>
+                <label>Your prefered Name:<br/> <input style={{width:"30%"}} name='entry.780464875' id="name" type='text' required></input></label>
+                <br></br>
+                <label>Your Email:<br/> <input style={{width:"30%"}} name='entry.1198297426' id="email" type='email' required></input></label>
+                <br></br>
+                <label>How Can I Help?<br/> <textarea style={{width:"70%"}} rows={10} name='entry.1898480093' id="message" required></textarea></label>
+                <br></br>
+                <button type='submit'>send</button>
+              </form>
+            </div>
           </div>
         </div>,
         document.getElementById("portal")

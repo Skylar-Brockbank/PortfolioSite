@@ -17,8 +17,10 @@ function Hero(props){
   return(
     <>
     <div style={heroStyles}>
-      <h1>Hold on to your butt</h1>
-      <p>Things are about to get crayzay</p>
+      {/* <h1>Hold on to your butt</h1> */}
+      <h1>You've Got A Project</h1>
+      <h2 style={{textDecoration:"none"}}>Let's make it happen</h2>
+      {/* <p>Things are about to get crayzay</p> */}
       <button style={buttonStyles} onClick={handleClick}>Contact Me</button>
     </div>
     </>

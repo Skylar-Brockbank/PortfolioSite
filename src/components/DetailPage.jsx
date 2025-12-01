@@ -83,8 +83,19 @@ export default function DetailPage(props){
     paddingBottom:"1em",
     backgroundColor:"rgba(0,0,0,0.1)"
   }
+  const listItemStyles={
+    textAlign:"start"
+  }
+
+  let linkHeader=null
+  if(props.data.links.length>0){
+    linkHeader=<h3>See it for yourself</h3>
+  }
+
   const handleClose=()=>{
-    props.func()
+    let target = document.getElementById("modalShell")
+    target.classList.add("closing")
+    setTimeout(()=>{props.func()},500)
   }
   const handleAdd=()=>{
     const l = props.data.image.length
@@ -95,10 +106,10 @@ export default function DetailPage(props){
     setImage((image-1)%l)
   }
   return ReactDom.createPortal(
-    <div style={containerStyles}>
+    <div id="modalShell" className="modal" style={containerStyles}>
     <div style={overlayStyles} onClick={handleClose}></div>
       <div style={divStyles}>
-        <h1>{props.data.title}</h1>
+        <h1 style={{marginTop:"0.5em"}}>{props.data.title}</h1>
         <div style={imageContainerStyles}>
         {/* {props.data.image.map((i,dex)=>{return(<img key={dex} src={i} style={imageStyles}></img>)})} */}
         <h1 onClick={handleSub} style={slideButtonStyles}>{"\<"}</h1>
@@ -109,12 +120,16 @@ export default function DetailPage(props){
           <div style={techContainerStyles}>
             <h4>Technologies</h4>
             <ul style={listStyles}>
-              {props.data.technologies.map((t,dex)=>{return(<li key={`t${dex}`}>{t}</li>)})}
+              {props.data.technologies.map((t,dex)=>{return(<li key={`t${dex}`} style={listItemStyles}>{t}</li>)})}
             </ul>
           </div>
-          <div style={techContainerStyles}>
+          <div style={{...techContainerStyles, paddingInline:"1em"}}>
             <p>{props.data.full_description}</p>
           </div>
+        </div>
+        <div>
+          {linkHeader}
+          {props.data.links.map((l,dex)=>{return(<a href={l} key={dex} target='_blank'>{l}</a>)})}
         </div>
       </div>
     </div>,

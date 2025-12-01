@@ -85,7 +85,7 @@ function Body(props){
       <div style={divStyles}>
         <h2>List of skills</h2>
         <div style={layoutGrid}>
-          {skills.map(s=>{return(<p style={listStyles}>{s}</p>)})}
+          {skills.map((s,dex)=>{return(<p key={dex} style={listStyles}>{s}</p>)})}
         </div>
       </div>
     </>
