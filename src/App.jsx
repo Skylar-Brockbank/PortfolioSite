@@ -9,13 +9,20 @@ import DetailPage from './components/DetailPage'
 import Contact from './components/Contact'
 
 import './App.css'
+import "./components/modal.css"
 
 function App() {
   const [currentPage,setCurrentPage] = useState({page:"home",id:null,portal:false,contact:false});
 
   const handleSetPage=(arg)=>{
-    window.scrollTo(0,0)
-    setCurrentPage({...currentPage,page:arg})
+    const target = document.getElementById("content")
+    target.classList.remove("opening")
+    target.classList.add("closing")
+    setTimeout(()=>{
+      window.scrollTo(0,0)
+      target.classList.remove("closing")
+      target.classList.add("opening")},501)
+    setTimeout(()=>{setCurrentPage({...currentPage,page:arg})},500)
   }
   const handleDetail=(arg)=>{
     setCurrentPage({...currentPage,portal:true,id:arg})
@@ -36,10 +43,12 @@ function App() {
     return (
       <>
         <Navigation contact={handleContact} handleSetPage={handleSetPage}/>
-        <DetailPage func ={portalOff} visible={currentPage.portal} data={galleryData[currentPage.id]}/>
-        <Contact func={contactOff} visible={currentPage.contact}/>
-        <Hero func={handleContact}/>
-        <Body func={handleDetail} change={handleSetPage}/>
+        <div id="content" className='opening'>
+          <DetailPage func ={portalOff} visible={currentPage.portal} data={galleryData[currentPage.id]}/>
+          <Contact func={contactOff} visible={currentPage.contact}/>
+          <Hero func={handleContact}/>
+          <Body func={handleDetail} change={handleSetPage}/>
+        </div>
         <Footer/>
       </>
     )
@@ -47,10 +56,12 @@ function App() {
     return (
       <>
         <Navigation contact={handleContact} handleSetPage={handleSetPage}/>
-        <h1>Project Gallery</h1>
-        {<DetailPage func ={portalOff} visible={currentPage.portal} data={galleryData[currentPage.id]}/>}
-        <Contact func={contactOff} visible={currentPage.contact}/>
-        <ProjectGrid handleDetail={handleDetail}/>
+        <div id="content" className='opening'>
+          <h1>Project Gallery</h1>
+          {<DetailPage func ={portalOff} visible={currentPage.portal} data={galleryData[currentPage.id]}/>}
+          <Contact func={contactOff} visible={currentPage.contact}/>
+          <ProjectGrid handleDetail={handleDetail}/>
+        </div>
         <Footer/> 
       </>
     )

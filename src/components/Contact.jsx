@@ -69,7 +69,7 @@ export default function Contact(props){
   }
   if(submitted){
       return ReactDom.createPortal(
-        <div style={containerStyles}>
+        <div id="modalShell" className="modal" style={containerStyles}>
         <div style={overlayStyles} onClick={handleClose}></div>
           <div style={divStyles}>
             <div style={contentStyles}>

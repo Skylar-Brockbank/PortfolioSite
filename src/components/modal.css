@@ -1,6 +1,7 @@
 @keyframes fadeIn{
   0%{
     opacity: 0;
+    scale: 95%;
   }
   100%{
     opacity:1;
@@ -8,14 +9,21 @@
 }
 @keyframes fadeOut{
   0%{
-    opacity:1
+    opacity:1;
+    scale: 100%;
   }
   100%{
-    opacity:0
+    opacity:0;
+    scale: 95%;
   }
 }
 
 .modal {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.opening {
   animation-name: fadeIn;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
