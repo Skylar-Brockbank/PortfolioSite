@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import galleryData from './assets/galleryData'
 import Body from './components/Body'
-import Footer from './components/footer'
+import Footer from './components/Footer.jsx'
 import Hero from './components/hero'
 import Navigation from './components/navigation'
 import ProjectGrid from './components/ProjectGrid'
