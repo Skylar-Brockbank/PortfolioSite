@@ -1,6 +1,6 @@
 import ProjectCard from "./ProjectCard"
 import galleryData from "../assets/galleryData"
-import "../components/ProjectCardStyles.css"
+import "../ProjectCardStyles.css"
 
 function Body(props){
 

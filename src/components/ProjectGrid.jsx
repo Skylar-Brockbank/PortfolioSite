@@ -1,5 +1,5 @@
 import ProjectCard from "./ProjectCard";
-import galleryData from "../assets/galleryData";
+import galleryData from "../assets/galleryData.js";
 
 function ProjectGrid(props){
   const gridStyles={
