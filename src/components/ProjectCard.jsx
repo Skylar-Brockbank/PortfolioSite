@@ -1,4 +1,3 @@
-import React from "react";
 import "./projectCardStyles.css"
 
 function ProjectCard(props){

@@ -1,5 +1,3 @@
-import ProjectGrid from "./ProjectGrid"
-import React from "react"
 import github from "../assets/github-mark.svg"
 import linkedin from "../assets/linkedin-mark.svg"
 
